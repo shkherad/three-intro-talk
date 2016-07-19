@@ -1,34 +1,33 @@
-# js-template
+# What is three.js?
 
-A template for starting front-end projects. Webpack for `require` system, build
-pipeline, and development server. Boostrap and Handlebars.js included. No
-front-end frameworks included.
+It is, according to their github page, "a lightweight 3D library with a very low
+ level of complexity — in other words, for dummies."
+
+ It's also extremely vast, though, and there are all kinds of amazing projects
+ that can be made.
 
 ## Dependencies
 
-Install with `npm install`.
+Install with `npm install` so that you'll be able to run grunt serve to see
+your images on local host!
 
--   [Webpack](https://webpack.github.io)
--   [Bootstrap](http://getbootstrap.com)
--   [Handlebars.js](http://handlebarsjs.com)
+## Let's begin to set the scene. Code along!
 
-At the beginning of each cohort, update the versions in
-[`package.json`](package.json) by replace all versions with a glob (`*`) and
-running `npm update --save && npm update --save-dev`. You may wish to test these
-changes by deleting the `node_modules` directory and running `npm install`.
-Fix any conflicts.
+https://github.com/mrdoob/three.js/
 
-## Installation
+To create something, we need to initialize three things: camera, scene, and renderer.
 
-1.  [Download](../../archive/master.zip) this template.
-1.  Unzip and rename the template directory.
-1.  Empty [`README.md`](README.md) and fill with your own content.
-1.  Move into the new project and `git init`.
-1.  Install dependencies with `npm install`.
+var scene = new THREE.Scene();
+var camera = new THREE.camera-type( field of view, aspect ratio, near clipping plane, far clipping plane );
+There are several different types of cameras. They take 3 arguments.
+**field of view
+**aspect ratio (for which you will almost always want to use
+window.innerWidth / window.innerHeight or it will be uneven)
+**near and far clipping plane set the areas that won't be rendered. anything
+closer than near and farther than far from the camera won't be shown.
+var renderer = new THREE.WebGLRenderer();
 
-## Structure
-
-Dependencies are stored in [`package.json`](package.json).
+You must also set the renderer's size (height and width) and append it to the document.
 
 Do not configure `grunt` packages directly in the
 [`Gruntfile.js`](Gruntfile.js). Instead, store configurations in the
