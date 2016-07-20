@@ -12,6 +12,47 @@
 
     <script src="lib/three.js"></script>
 		<script>
+		var camera, scene, renderer;
+		            scene = new THREE.Scene();
+		      //woo, that's done!
+		      //a little more complicated, a camera takes a couple of arguments
+		      //first = field of view, in degrees
+		      //second = aspect ratio, which will almost always be width/height or things
+		      //will look oddly stretched
+		      //third = near, the closest point of the scene that will be rendered
+		      //fourth= far, the farthest point of the scene that will be rendered
+		      //just picture a real camera!
+		            camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000 );
+		      //imagine this as zooming out
+		      camera.position.z = 10;
+		      //again, there are several different options to use as a renderer, but
+		      //WebGL appears to be the most common with the other options primarily
+		      //for users whose browsers aren't compatible with WebGL
+		            renderer = new THREE.WebGLRenderer();
+		      //let's make ours half-size, but this isn't necessary!
+		            renderer.setSize( window.innerWidth, window.innerHeight );
+		      //attaches the renderer to the body of our html
+		            document.body.appendChild( renderer.domElement );
+		            var geometry = new THREE.SphereGeometry( 4, 100, 100 );
+		      //let's set some different colors for the faces!
+		      //for some odd reason, each face actually is made up of two triangles, so
+		      //one full side is two "faces". not sure why. just discovered this while playing
+		                for ( var i = 0; i < geometry.faces.length; i += 2 ) {
+		                    var hex = Math.random() * 0xffffff;
+		                    geometry.faces[ i ].color.setHex( hex );
+		                    geometry.faces[ i + 1 ].color.setHex( hex );
+		                }
+		      var material = new THREE.MeshBasicMaterial( { vertexColors: THREE.FaceColors, overdraw: 0.5 } );
+		            var sphere = new THREE.Mesh( geometry, material );
+		            scene.add( sphere );
+		            var render = function () {
+		                requestAnimationFrame( render );
+		                sphere.rotation.y += 0.01;
+										sphere.rotation.x += 0.02;
+		                renderer.render(scene, camera);
+		            };
+		            render();
+
 		</script>
 
 	</body>
