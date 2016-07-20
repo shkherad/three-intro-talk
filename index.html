@@ -33,7 +33,7 @@
             renderer.setSize( window.innerWidth, window.innerHeight );
       //attaches the renderer to the body of our html
             document.body.appendChild( renderer.domElement );
-            var geometry = new THREE.BoxGeometry( 3, 3, 3 );
+            var geometry = new THREE.SphereGeometry( 4, 8, 6 );
       //let's set some different colors for the faces!
       //for some odd reason, each face actually is made up of two triangles, so
       //one full side is two "faces". not sure why. just discovered this while playing
@@ -48,7 +48,6 @@
             var render = function () {
                 requestAnimationFrame( render );
                 cube.rotation.y += 0.01;
-                cube.rotation.x += 0.01;
                 renderer.render(scene, camera);
             };
             render();
