@@ -19,10 +19,6 @@ It is a library that's meant to make rendering 3D images to browsers easier. It
 works with rendering APIs such as WebGL, except using three.js means
 much, much less code!
 
-(as for WebGL, what's that? it's a Javascript API that accesses the computer's
-GPU and renders 2 and 3D interactive graphics to compatible browsers'
-canvas element.)
-
 But since it's tool for graphics, let's actually look at some examples (selected
 from threejs.org):
 http://news-lab-trends-experiment.appspot.com/
